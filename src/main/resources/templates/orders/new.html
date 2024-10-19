@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Создать заказ</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/orders}" th:object="${order}">
+
+    <label for="total_amount">Введите сумму:</label>
+    <input type="text" th:field="*{total_amount}" id="total_amount">
+    <div style="color:red" th:if="${#fields.hasErrors('total_amount')}" th:errors="*{total_amount}">total_amount Error</div>
+    <br />
+
+    <label for="status_of_order">Введите статус заказа :</label>
+    <input type="text" th:field="*{status_of_order}" id="status_of_order">
+    <div style="color:red" th:if="${#fields.hasErrors('status_of_order')}" th:errors="*{status_of_order}">status_of_order Error</div>
+    <br />
+
+    <label for="table_id">Введите id стола:</label>
+    <input type="text" th:field="*{table_id}" id="table_id">
+    <div style="color:red" th:if="${#fields.hasErrors('table_id')}" th:errors="*{table_id}">table_id Error</div>
+    <br />
+
+    <label for="client_id">Введите id клиента:</label>
+    <input type="text" th:field="*{client_id}" id="client_id">
+    <div style="color:red" th:if="${#fields.hasErrors('client_id')}" th:errors="*{client_id}">client_id Error</div>
+    <br />
+
+    <label for="dishes">Выберите блюда:</label>
+    <select multiple th:field="*{dishesId}" id="dishes">
+        <option th:each="dish : ${dishes}" th:value="${dish.id}" th:text="${dish.name}"></option>
+    </select>
+    <div style="color:red" th:if="${#fields.hasErrors('dishesId')}" th:errors="*{dishesId}">dishIds Error</div>
+    <br />
+
+    <input type="submit" value="Создать">
+</form>
+
+</body>
+</html>

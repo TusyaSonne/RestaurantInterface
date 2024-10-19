@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>О заказе</title>
+</head>
+<body>
+
+<p th:text="${ 'Заказ № ' + order.getId()}"></p>
+<p th:text="${ 'Общая сумма: ' + order.getTotal_amount()}"></p>
+<p th:text="${ 'Время заказа: ' + order.getOrder_time()}"></p>
+<p th:text="${ 'Статус заказа: ' + order.getStatus_of_order()}"></p>
+<p th:text="${ 'id столика: ' + order.getTable_id()}"></p>
+<p th:text="${ 'id клиента: ' + order.getClient_id()}"></p>
+
+<hr />
+
+<div th:if="${dishes.isEmpty()}">
+    <p>Пока ни одно блюдо не добавлено</p>
+</div>
+<div th:if="${!dishes.isEmpty()}" th:each="dish : ${dishes}">
+    <a th:text="${dish.getName()}">Блюдо</a>
+</div>
+
+<hr />
+
+<a th:href="@{/orders/{id}/edit(id=${order.getId()})}">Изменить</a>
+
+<form th:method="DELETE" th:action="@{/orders/{id}(id=${order.getId()})}">
+    <input type="submit" value="Удалить">
+</form>
+
+</body>
+</html>

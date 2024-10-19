@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Все брони</title>
+</head>
+
+<body>
+
+<div th:each="table_reservation : ${table_reservations}">
+    <a th:href="@{/table_reservations/{id}(id=${table_reservation.getId()})}"
+    th:text="${'Стол ' + table_reservation.getTable_id() + ', ' + table_reservation.getStart_time() + ' - ' + table_reservation.getEnd_time()}">Бронь</a>
+</div>
+<hr />
+<a href="/table_reservations/new">Добавить новую бронь</a>
+
+<hr />
+
+<!-- Добавление кнопок для перехода к другим разделам -->
+<div>
+    <a href="/orders">
+        <button>Перейти к заказам</button>
+    </a>
+
+    <a href="/tables">
+        <button>Перейти к столам</button>
+    </a>
+
+    <a href="/clients">
+        <button>Перейти к клиентам</button>
+    </a>
+
+    <a href="/dishes">
+        <button>Перейти к блюдам</button>
+    </a>
+
+    <a href="/ingredients">
+        <button>Перейти к ингредиентам</button>
+    </a>
+</div>
+
+</body>
+</html>

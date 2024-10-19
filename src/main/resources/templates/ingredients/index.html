@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Все ингредиенты</title>
+</head>
+
+<body>
+
+<div th:each="ingredient : ${ingredients}">
+    <a th:href="@{/ingredients/{id}(id=${ingredient.getId()})}"
+    th:text="${ingredient.getName()}">Ингредиент</a>
+</div>
+<hr />
+<a href="/ingredients/new">Добавить новый ингредиент</a>
+
+<hr />
+
+<!-- Добавление кнопок для перехода к другим разделам -->
+<div>
+    <a href="/orders">
+        <button>Перейти к заказам</button>
+    </a>
+
+    <a href="/tables">
+        <button>Перейти к столам</button>
+    </a>
+
+    <a href="/table_reservations">
+        <button>Перейти к бронированию столов</button>
+    </a>
+
+    <a href="/dishes">
+        <button>Перейти к блюдам</button>
+    </a>
+
+    <a href="/clients">
+        <button>Перейти к клиентам</button>
+    </a>
+</div>
+
+</body>
+</html>

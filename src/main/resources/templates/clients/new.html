@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Создать клиента</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/clients}" th:object="${client}">
+    <label for="full_name">Введите ФИО:</label>
+    <input type="text" th:field="*{full_name}" id="full_name">
+    <div style="color:red" th:if="${#fields.hasErrors('full_name')}" th:errors="*{full_name}">Fullname Error</div>
+
+    <label for="phone_number">Введите телефон:</label>
+    <input type="text" th:field="*{phone_number}" id="phone_number">
+    <div style="color:red" th:if="${#fields.hasErrors('phone_number')}" th:errors="*{phone_number}">Phone Number Error</div>
+
+    <input type="submit" value="Создать">
+</form>
+
+</body>
+</html>

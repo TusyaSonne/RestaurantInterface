@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить блюдо</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/dishes}" th:object="${dish}">
+    <label for="name">Введите название:</label>
+    <input type="text" th:field="*{name}" id="name">
+    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">name Error</div>
+
+    <label for="price">Введите цену:</label>
+    <input type="text" th:field="*{price}" id="price">
+    <div style="color:red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">price Error</div>
+
+    <input type="submit" value="Создать">
+</form>
+
+</body>
+</html>

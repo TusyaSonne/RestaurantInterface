@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить бронь</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/table_reservations}" th:object="${table_reservation}">
+    <label for="table_id">Введите номер стола:</label>
+    <input type="text" th:field="*{table_id}" id="table_id">
+    <div style="color:red" th:if="${#fields.hasErrors('table_id')}" th:errors="*{table_id}">table_id Error</div>
+    <br />
+
+    <label for="start_time">Введите дату начала брони:</label>
+    <input type="text" th:field="*{start_time}" id="start_time">
+    <div style="color:red" th:if="${#fields.hasErrors('start_time')}" th:errors="*{start_time}">start_time  Error</div>
+    <br />
+
+    <label for="end_time">Введите дату конца брони:</label>
+    <input type="text" th:field="*{end_time}" id="end_time">
+    <div style="color:red" th:if="${#fields.hasErrors('start_time')}" th:errors="*{start_time}">start_time  Error</div>
+    <br />
+
+    <input type="submit" value="Добавить">
+</form>
+
+</body>
+</html>

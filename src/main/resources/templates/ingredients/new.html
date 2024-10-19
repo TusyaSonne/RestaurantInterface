@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить ингредиент</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/ingredients}" th:object="${ingredient}">
+    <label for="name">Введите название ингредиента:</label>
+    <input type="text" th:field="*{name}" id="name">
+    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">name Error</div>
+
+    <label for="quantity">Введите количество:</label>
+    <input type="text" th:field="*{quantity}" id="quantity">
+    <div style="color:red" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}">quantity Error</div>
+
+    <input type="submit" value="Добавить">
+</form>
+
+</body>
+</html>

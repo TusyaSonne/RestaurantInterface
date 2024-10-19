@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменить блюдо</title>
+</head>
+
+<body>
+
+<form th:method="PATCH" th:action="@{/dishes/{id}(id=${dish.getId})}" th:object="${dish}">
+
+    <label for="name">Введите название блюда:</label>
+    <input type="text" th:field="*{name}" id="name">
+    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">name Error</div>
+    <br />
+
+    <label for="price">Введите цену блюда:</label>
+    <input type="text" th:field="*{price}" id="price">
+    <div style="color:red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">price  Error</div>
+    <br />
+
+    <input type="submit" value="Обновить">
+
+</form>
+
+</body>
+</html>

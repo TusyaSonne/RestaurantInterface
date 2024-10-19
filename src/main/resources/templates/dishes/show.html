@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>О блюде</title>
+</head>
+<body>
+
+<p th:text="${dish.getName() + ', Цена: ' + dish.getPrice()}"></p>
+
+
+
+<div th:if="${ingredients.isEmpty()}">
+    <p>Пока ни один ингредиент не добавлен</p>
+</div>
+<div th:if="${!ingredients.isEmpty()}" th:each="ingredient : ${ingredients}">
+    <a th:text="${ingredient.getName()}">Ингредиент</a>
+</div>
+<hr />
+
+<a th:href="@{/dishes/{id}/edit(id=${dish.getId()})}">Изменить</a>
+
+<form th:method="DELETE" th:action="@{/dishes/{id}(id=${dish.getId()})}">
+    <input type="submit" value="Удалить">
+</form>
+
+</body>
+</html>

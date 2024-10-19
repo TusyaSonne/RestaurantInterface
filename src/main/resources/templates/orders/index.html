@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Все заказы</title>
+</head>
+
+<body>
+
+<div th:each="order : ${orders}">
+    <a th:href="@{/orders/{id}(id=${order.getId()})}"
+    th:text=" 'Заказ № ' + ${order.getId()}">Заказ</a>
+</div>
+<hr />
+<a href="/orders/new">Создать новый заказ</a>
+
+<hr />
+
+<!-- Добавление кнопок для перехода к другим разделам -->
+<div>
+    <a href="/clients">
+        <button>Перейти к клиентам</button>
+    </a>
+
+    <a href="/tables">
+        <button>Перейти к столам</button>
+    </a>
+
+    <a href="/table_reservations">
+        <button>Перейти к бронированию столов</button>
+    </a>
+
+    <a href="/dishes">
+        <button>Перейти к блюдам</button>
+    </a>
+
+    <a href="/ingredients">
+        <button>Перейти к ингредиентам</button>
+    </a>
+</div>
+
+</body>
+</html>

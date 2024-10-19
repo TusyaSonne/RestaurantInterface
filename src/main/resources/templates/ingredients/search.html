@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск ингредиентов</title>
+</head>
+<body>
+
+<form th:action="@{/ingredients/search}" th:method="POST">
+    <label for="name">Введите название ингредиента:</label>
+    <input type="text" id="name" name="name" placeholder="Введите название"/>
+
+    <label for="filterByQuantity">Сортировать по количеству:</label>
+    <input type="checkbox" id="filterByQuantity" name="filterByQuantity"/>
+
+    <label for="dishes">Поиск по блюду:</label>
+    <select id="dishes" name="dishesID" multiple>
+        <option th:each="dish : ${dishes}" th:value="${dish.id}" th:text="${dish.name}">Dish Name</option>
+    </select>
+
+    <button type="submit">Искать</button>
+</form>
+
+<h2>Результат поиска</h2>
+<ul>
+    <li th:each="ingredient : ${ingredients}">
+        <span th:text="${ingredient.name}">Ingredient Name</span> -
+        <span th:text="${ingredient.quantity}">Quantity</span>
+    </li>
+</ul>
+
+</body>
+</html>

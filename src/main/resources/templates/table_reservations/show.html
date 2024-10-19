@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>О брони</title>
+</head>
+<body>
+
+<p th:text="${'Бронь ' + table_reservation.getId()}"></p>
+<p th:text="${'Стол ' + table_reservation.getTable_id()}"></p>
+<p th:text="${'Дата начала: ' + table_reservation.getStart_time()}"></p>
+<p th:text="${'Дата конца ' + table_reservation.getEnd_time()}"></p>
+
+
+
+<a th:href="@{/table_reservations/{id}/edit(id=${table_reservation.getId()})}">Изменить</a>
+
+<form th:method="DELETE" th:action="@{/table_reservations/{id}(id=${table_reservation.getId()})}">
+    <input type="submit" value="Удалить">
+</form>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление стола</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/tables}" th:object="${table}">
+
+    <label for="number_of_seats">Введите количество мест:</label>
+    <input type="text" th:field="*{number_of_seats}" id="number_of_seats">
+    <div style="color:red" th:if="${#fields.hasErrors()}" th:errors="*{number_of_seats}">number_of_seats Error</div>
+    <br />
+
+    <input type="submit" value="Добавить книгу">
+
+</form>
+
+</body>
+</html>
